@@ -4,14 +4,11 @@ import { createStore } from 'vuex'
 export default createStore({
 	state: {
 		phoneNumber: "",
-		contacts:[
-			{'name' : 'Tom', 'number' : '0625347569'},
-			{'name' : 'Bob', 'number' : '0769423842'},
-			{'name' : 'Alice', 'number' : '5555112'},
-			{'name' : 'JusteX', 'number' : '113'},
-		],
+		contacts:[],
 		recentCall:[],
-		contactName: String
+		contactName: "",
+		errors:[],
+		success:[]
 	},
 	getters: {
 	},
@@ -20,7 +17,8 @@ export default createStore({
 			state.phoneNumber+=num
 		},
 		resetNum(state){
-			state.phoneNumber=''
+			state.phoneNumber=""
+			state.contactName=""
 		},
 		call(state, name){
 			if(name=="") return
@@ -32,8 +30,20 @@ export default createStore({
 			state.contactName = name 
 		},
 		addContact(state, form){
+			state.errors = []
+			state.success = []
+
+			if(form.name == "" || form.number == ""){
+				state.errors = ["Un champ est vide."]
+				return
+			}
+			if(state.contacts.map(a => a.number).find(Number => Number === form.number)){
+				state.errors = ["Ce numéro est déjà attribué."]
+				return
+			}
+			state.success = ["Contact ajouté !"]
 			state.contacts.push({'name' : form.name, 'number' : form.number})
-		}
+		},
 	},
 	actions: {
 	},

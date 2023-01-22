@@ -64,7 +64,7 @@ export default {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	height: 80vh;
+	height: 80%;
 }
 
 .screen {
@@ -123,6 +123,7 @@ hr {
 	color: #581414;
 	transition: 0.2s;
 	cursor: pointer;
+	z-index: 5;
 }
 
 .reset:hover {

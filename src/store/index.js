@@ -25,6 +25,7 @@ export default createStore({
 			const date = new Date();
 			const formattedDate = "Le "+date.toLocaleDateString("fr")+" à "+date.getHours()+"h"+date.getMinutes()
 			state.recentCall.push({'name': name, 'date' :formattedDate})
+			state.recentCall.reverse()
 		},
 		updateContactName(state, name){
 			state.contactName = name 

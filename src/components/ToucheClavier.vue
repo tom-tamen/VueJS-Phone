@@ -30,6 +30,7 @@ export default {
 		color: #2b5814;
 		transition: 0.2s;
 		cursor: pointer;
+		z-index: 5;
 	}
 	button:hover{
 		color: #abe290;

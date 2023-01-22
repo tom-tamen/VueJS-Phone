@@ -49,8 +49,10 @@ export default {
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        height: 90vh;
+        height: 100%;
         gap: 50px;
+        z-index: 5;
+        position: relative;
     }
     input[type=text], input[type=submit]{
         height: 6vh;

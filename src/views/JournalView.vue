@@ -1,14 +1,16 @@
 <template>
 	<div class="Journal">
-
 		<div v-if="recentCall.length" class="call-list">
 			<div class="call-details" v-for="call in recentCall" :key="call" >
+				<div class="space"></div>
+				<div class="space"></div>
 				<div class="call-infos">
 					<p>{{ call.name }}</p>
 					<p>{{ call.date }}</p>
 				</div>
 				<hr>
 			</div>
+			<div class="space"></div>
 		</div>
 		<div class="nothing" v-if="!recentCall.length">
 			<img src="@/assets/history.png" alt="Journal">
@@ -24,7 +26,7 @@ export default {
 	name: 'JournalView',
 	data() {
 		return {
-			recentCall: this.$store.state.recentCall.reverse(),
+			recentCall: this.$store.state.recentCall,
 		}
 	},
 	
@@ -34,6 +36,7 @@ export default {
 <style scoped>
 	h1{
 		color: white;
+		font-size: 20px;
 	}
 
 	.nothing{
@@ -43,6 +46,10 @@ export default {
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 	.call-list{
 		display: flex;
@@ -50,10 +57,9 @@ export default {
 		align-items: center;
 		justify-content: flex-start;
 		overflow-y: scroll;
-		height: 85vh;
+		height: 100%;
 		padding: 10px;
 		gap: 20px;
-
 	}
 	.call-details{
 		width: 90%;
@@ -61,6 +67,7 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 		flex-direction: column;
+		height: 8vh;
 	}
 
 	.call-infos{
@@ -68,6 +75,7 @@ export default {
 		flex-direction: column;
 		gap:15px;
 		height: 10vh;
+		z-index: 5;
 	}
 	.call-details p:nth-child(1){
 		color: white;
@@ -91,5 +99,9 @@ export default {
 		0 0 15px #369ae7,
 		0 0 25px #369ae7;
 		
+	}
+
+	.Journal{
+		height: 85%;
 	}
 </style>
